@@ -7,7 +7,6 @@ import lombok.Setter;
 import project.seb39_main_043.calendar.entity.Calendar;
 import project.seb39_main_043.diary.entity.Diary;
 import project.seb39_main_043.member.entity.Member;
-import project.seb39_main_043.membercalendar.MemberCalendar;
 import project.seb39_main_043.schedule.comment.entity.ScheduleComment;
 
 import javax.persistence.*;
@@ -32,8 +31,8 @@ public class Schedule {
     @Column(length = 100, nullable = false)
     private String attendees;
 
-//    private LocalDateTime startEventAt;
-//    private LocalDateTime endEventAt;
+    @Column(length = 100, nullable = false)
+    private String scheduleAt;
 
     @Column(length = 100)
     private String location;

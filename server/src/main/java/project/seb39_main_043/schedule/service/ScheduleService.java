@@ -2,34 +2,65 @@ package project.seb39_main_043.schedule.service;
 
 import org.springframework.stereotype.Service;
 import project.seb39_main_043.schedule.entity.Schedule;
+import project.seb39_main_043.schedule.repository.ScheduleRepository;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ScheduleService {
 
-    public Schedule createSchedule(Schedule event) {
+    private final ScheduleRepository scheduleRepository;
 
-        Schedule createdEvent = event;
-        return createdEvent;
+    public ScheduleService(ScheduleRepository scheduleRepository) {
+        this.scheduleRepository = scheduleRepository;
+    }
+
+    public Schedule createSchedule(Schedule schedule) {
+        return scheduleRepository.save(schedule);
     }
 
     public Schedule updateSchedule(Schedule schedule) {
 
-        return null;
+        Schedule findSchedule = verifyExistSchedule(schedule.getScheduleId());
+
+        Optional.ofNullable(schedule.getTitle())
+                .ifPresent(title -> findSchedule.setTitle(title));
+
+        Optional.ofNullable(schedule.getScheduleAt())
+                .ifPresent(scheduleAt -> findSchedule.setScheduleAt(scheduleAt));
+
+        Optional.ofNullable(schedule.getAttendees())
+                .ifPresent(attendees -> findSchedule.setAttendees(attendees));
+
+        Optional.ofNullable(schedule.getLocation())
+                .ifPresent(location -> findSchedule.setLocation(location));
+
+        Optional.ofNullable(schedule.getContents())
+                .ifPresent(contents -> findSchedule.setContents(contents));
+
+        return scheduleRepository.save(findSchedule);
     }
 
     public Schedule findSchedule(long scheduleId) {
 
-        return null;
-    }
+        Optional<Schedule> optionalSchedule = scheduleRepository.findById(scheduleId);
+        Schedule findSchedule = optionalSchedule.orElseThrow(() -> new IllegalArgumentException("No Schedule here"));
 
-    public List<Schedule> findSchedules() {
-
-        return null;
+        return findSchedule;
     }
 
     public void deleteSchedule(long scheduleId) {
+        Schedule findSchedule = verifyExistSchedule(scheduleId);
 
+        scheduleRepository.delete(findSchedule);
+    }
+
+    public Schedule verifyExistSchedule(Long scheduleId) {
+        Optional<Schedule> optionalSchedule =
+                scheduleRepository.findById(scheduleId);
+        Schedule findSchedule = optionalSchedule
+                .orElseThrow(() -> new IllegalArgumentException("No Schedule here!"));
+
+        return findSchedule;
     }
 }

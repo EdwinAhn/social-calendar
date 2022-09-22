@@ -22,13 +22,13 @@ public abstract class BaseEntity {
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
-//    @CreatedBy
-//    @Column(name = "created_by", updatable = false)
-//    private String createdBy;
-
     @LastModifiedDate
     @Column(name = "modified_at")
     private LocalDateTime modifiedAt;
+
+//    @CreatedBy
+//    @Column(name = "created_by", updatable = false)
+//    private String createdBy;
 
 //    @LastModifiedBy
 //    @Column(name = "modified_by")

@@ -7,5 +7,4 @@ import project.seb39_main_043.schedule.entity.Schedule;
 @Repository
 public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
 
-
 }
