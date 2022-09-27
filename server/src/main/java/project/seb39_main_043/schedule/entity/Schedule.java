@@ -1,25 +1,23 @@
 package project.seb39_main_043.schedule.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import project.seb39_main_043.calendar.entity.Calendar;
+import project.seb39_main_043.common.BaseEntity;
 import project.seb39_main_043.diary.entity.Diary;
 import project.seb39_main_043.member.entity.Member;
 import project.seb39_main_043.schedule.comment.entity.ScheduleComment;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
-public class Schedule {
+public class Schedule extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,6 +52,11 @@ public class Schedule {
     @OneToOne
     @JoinColumn(name = "diary_id")
     private Diary diary;
+
+    public void setDiary(Diary diary) {
+        this.diary = diary;
+        diary.setSchedule(this);
+    }
 
     @ManyToOne
     @JoinColumn(name = "member_id")

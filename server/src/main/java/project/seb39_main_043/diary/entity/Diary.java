@@ -12,10 +12,9 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 public class Diary {
 
@@ -31,6 +30,13 @@ public class Diary {
 
     @Column(length = 100)
     private String diaryImg;
+
+    public Diary(Long diaryId, String title, String contents, String diaryImg) {
+        this.diaryId = diaryId;
+        this.title = title;
+        this.contents = contents;
+        this.diaryImg = diaryImg;
+    }
 
     @OneToMany(mappedBy = "diary")
     private List<DiaryComment> diaryComments = new ArrayList<>();

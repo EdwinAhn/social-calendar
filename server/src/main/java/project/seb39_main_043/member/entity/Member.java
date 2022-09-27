@@ -1,38 +1,39 @@
 package project.seb39_main_043.member.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import project.seb39_main_043.calendar.entity.CalendarMember;
+import project.seb39_main_043.common.BaseEntity;
 import project.seb39_main_043.diary.entity.Diary;
-import project.seb39_main_043.membercalendar.MemberCalendar;
 import project.seb39_main_043.schedule.entity.Schedule;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
-@Getter
 @NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@Setter
 @Entity
-public class Member {
+public class Member extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long memberId;
 
     @Column(length = 100)
-    private String memberImg;
-
-    @Column(length = 100, nullable = false, unique = true)
     private String email;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 50)
     private String name;
 
-    @Column(length = 100, nullable = false)
+    @Column(length = 100)
     private String password;
+
+    @Column(length = 100)
+    private String memberImg;
 
     @Column(length = 50)
     private String statusMessage;
@@ -60,6 +61,13 @@ public class Member {
     }
 
     @OneToMany(mappedBy = "member")
-    private List<MemberCalendar> memberCalendars = new ArrayList<>();
+    private List<CalendarMember> calendarMembers = new ArrayList<>();
+
+    public void addCalendarMember(CalendarMember calendarMember) {
+        this.calendarMembers.add(calendarMember);
+        if (calendarMember.getMember() != this) {
+            calendarMember.addMember(this);
+        }
+    }
 }
 

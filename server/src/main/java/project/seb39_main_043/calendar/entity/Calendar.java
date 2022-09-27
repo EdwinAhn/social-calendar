@@ -1,22 +1,20 @@
 package project.seb39_main_043.calendar.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import project.seb39_main_043.membercalendar.MemberCalendar;
+import project.seb39_main_043.common.BaseEntity;
 import project.seb39_main_043.schedule.entity.Schedule;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-public class Calendar {
+public class Calendar extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,8 +26,8 @@ public class Calendar {
     @Column(length = 100)
     private String calendarImg;
 
-    @OneToMany(mappedBy = "calendar")
-    private List<MemberCalendar> memberCalendars = new ArrayList<>();
+    @OneToMany(mappedBy = "calendar", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    private List<CalendarMember> calendarMembers = new ArrayList<>();
 
     @OneToMany(mappedBy = "calendar")
     private List<Schedule> schedules = new ArrayList<>();

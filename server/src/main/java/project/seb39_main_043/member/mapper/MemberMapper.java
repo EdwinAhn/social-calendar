@@ -1,0 +1,69 @@
+package project.seb39_main_043.member.mapper;
+
+import org.mapstruct.Mapper;
+import org.springframework.stereotype.Component;
+import project.seb39_main_043.member.dto.MemberPatchDto;
+import project.seb39_main_043.member.dto.MemberPostDto;
+import project.seb39_main_043.member.dto.MemberResponseDto;
+import project.seb39_main_043.member.entity.Member;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Mapper
+@Component
+public class MemberMapper {
+
+    public Member memberPostDtoToMember(MemberPostDto memberPostDto) {
+        if (memberPostDto == null) {
+            return null;
+        } else {
+            Member member = new Member();
+            member.setName(memberPostDto.getName());
+            member.setEmail(memberPostDto.getEmail());
+            member.setPassword(memberPostDto.getPassword());
+            return member;
+        }
+    }
+
+    public Member memberPatchDtoToMember(MemberPatchDto memberPatchDto) {
+        if (memberPatchDto == null) {
+            return null;
+        } else {
+            Member member = new Member();
+
+            member.setMemberId(memberPatchDto.getMemberId());
+            member.setName(memberPatchDto.getName());
+            member.setMemberImg(memberPatchDto.getMemberImg());
+            member.setStatusMessage(memberPatchDto.getStatusMessage());
+
+            return member;
+        }
+    }
+    public MemberResponseDto memberToMemberResponseDto(Member member) {
+        if (member == null) {
+            return null;
+        } else {
+            Long memberId = member.getMemberId();
+            String name = member.getName();
+            String email = member.getEmail();
+            String password = member.getPassword();
+            String memberImg = member.getMemberImg();
+
+            MemberResponseDto memberResponseDto = new MemberResponseDto(memberId, email, name, password, memberImg);
+            return memberResponseDto;
+        }
+    }
+
+    public List<MemberResponseDto> membersToMemberResponseDtos(List<Member> members) {
+        if (members == null) {
+            return null;
+        } else {
+            List<MemberResponseDto> list = new ArrayList<>(members.size());
+            for (Member member : members) {
+                list.add(memberToMemberResponseDto(member));
+            }
+            return list;
+        }
+    }
+}
