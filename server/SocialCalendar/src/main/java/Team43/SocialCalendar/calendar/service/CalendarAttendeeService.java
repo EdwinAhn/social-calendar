@@ -1,5 +1,6 @@
 package Team43.SocialCalendar.calendar.service;
 
+import Team43.SocialCalendar.calendar.dto.AddCalendarAttendeeDto;
 import Team43.SocialCalendar.calendar.entity.Calendar;
 import Team43.SocialCalendar.calendar.entity.CalendarAttendee;
 import Team43.SocialCalendar.calendar.repository.CalendarAttendeeRepository;
@@ -63,6 +64,11 @@ public class CalendarAttendeeService {
                         new BusinessLogicException(ExceptionCode.CALENDAR_ATTENDEE_NOT_FOUND));
 
         return findCalendarAttendee;
+    }
+
+    public Long useEmailToMemberId(AddCalendarAttendeeDto addCalendarAttendeeDto) {
+
+        return memberService.emailToMemberId(addCalendarAttendeeDto.getEmail());
     }
 
     private CalendarAttendee saveCalendarAttendee(CalendarAttendee calendarAttendee) {

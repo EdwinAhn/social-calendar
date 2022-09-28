@@ -1,6 +1,7 @@
 package Team43.SocialCalendar.member.entity;
 
 import Team43.SocialCalendar.calendar.entity.CalendarAttendee;
+import Team43.SocialCalendar.calendar.mapper.EmailToMemberId;
 import Team43.SocialCalendar.diary.entity.Diary;
 import Team43.SocialCalendar.schedule.entity.Schedule;
 import lombok.Getter;

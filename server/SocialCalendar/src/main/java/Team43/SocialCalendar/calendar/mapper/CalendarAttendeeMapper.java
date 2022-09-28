@@ -4,7 +4,10 @@ import Team43.SocialCalendar.calendar.dto.AddCalendarAttendeeDto;
 import Team43.SocialCalendar.calendar.dto.AddCalendarAttendeeResponseDto;
 import Team43.SocialCalendar.calendar.entity.Calendar;
 import Team43.SocialCalendar.calendar.entity.CalendarAttendee;
+import Team43.SocialCalendar.calendar.service.CalendarAttendeeService;
+import Team43.SocialCalendar.calendar.service.CalendarService;
 import Team43.SocialCalendar.member.entity.Member;
+import Team43.SocialCalendar.member.service.MemberService;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
@@ -13,9 +16,14 @@ public interface CalendarAttendeeMapper {
     default CalendarAttendee addCalendarAttendeeDtoToCalendarAttendee(AddCalendarAttendeeDto addCalendarAttendeeDto) {
         Calendar calendar = new Calendar();
         Member member = new Member();
+        EmailToMemberId emailToMemberId = new EmailToMemberId();
+//        CalendarAttendeeService calendarAttendeeService = new CalendarAttendeeService();
         CalendarAttendee calendarAttendee = new CalendarAttendee();
         calendar.setCalendarId(addCalendarAttendeeDto.getCalendarId());
-        member.setMemberId(addCalendarAttendeeDto.getMemberId());
+//        member.setMemberId(addCalendarAttendeeDto.getMemberId());
+//        emailToMemberId.getCalendarAttendeeService().useEmailToMemberId(addCalendarAttendeeDto);
+        member.setMemberId(emailToMemberId.getCalendarAttendeeService().useEmailToMemberId(addCalendarAttendeeDto));
+
         calendarAttendee.addCalendar(calendar);
         calendarAttendee.addMember(member);
 

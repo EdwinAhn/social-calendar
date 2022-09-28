@@ -10,6 +10,10 @@ public class AddCalendarAttendeeDto {
     @Positive
     private long calendarId;
 
-    @Positive
-    private long memberId;
+//    @Positive
+//    private long memberId;
+
+    private String email;
+
+
 }

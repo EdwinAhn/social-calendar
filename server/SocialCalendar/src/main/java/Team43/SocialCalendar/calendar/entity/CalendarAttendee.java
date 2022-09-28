@@ -1,5 +1,6 @@
 package Team43.SocialCalendar.calendar.entity;
 
+import Team43.SocialCalendar.calendar.mapper.EmailToMemberId;
 import Team43.SocialCalendar.member.entity.Member;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -38,4 +39,5 @@ public class CalendarAttendee {
             this.memberId.addCalendarAttendee(this);
         }
     }
+
 }
