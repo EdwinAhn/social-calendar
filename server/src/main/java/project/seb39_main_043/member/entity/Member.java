@@ -6,6 +6,7 @@ import lombok.Setter;
 import project.seb39_main_043.calendar.entity.CalendarMember;
 import project.seb39_main_043.common.BaseEntity;
 import project.seb39_main_043.diary.entity.Diary;
+import project.seb39_main_043.schedule.comment.entity.ScheduleComment;
 import project.seb39_main_043.schedule.entity.Schedule;
 
 import javax.persistence.*;
@@ -69,5 +70,8 @@ public class Member extends BaseEntity {
             calendarMember.addMember(this);
         }
     }
+
+    @OneToMany(mappedBy = "member")
+    private List<ScheduleComment> scheduleComments = new ArrayList<>();
 }
 

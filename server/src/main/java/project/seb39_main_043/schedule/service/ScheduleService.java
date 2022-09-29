@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import project.seb39_main_043.schedule.entity.Schedule;
 import project.seb39_main_043.schedule.repository.ScheduleRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -47,6 +48,10 @@ public class ScheduleService {
         Schedule findSchedule = optionalSchedule.orElseThrow(() -> new IllegalArgumentException("No Schedule here"));
 
         return findSchedule;
+    }
+
+    public List<Schedule> findSchedulesByCalendarId(long calendarId) {
+        return scheduleRepository.findScheduleByCalendar_CalendarId(calendarId);
     }
 
     public void deleteSchedule(long scheduleId) {

@@ -17,5 +17,4 @@ public class SchedulePatchDto {
     private String attendees;
     private String location;
     private String contents;
-
 }

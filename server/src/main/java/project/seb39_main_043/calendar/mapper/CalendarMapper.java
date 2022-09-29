@@ -33,11 +33,11 @@ public class CalendarMapper {
                         member.setName(calendarMemberDto.getName());
                         calendarMember.addCalendar(calendar);
                         calendarMember.addMember(member);
+
                         return calendarMember;
                     }).collect(Collectors.toList());
 
             calendar.setTitle(calendarPostDto.getTitle());
-            calendar.setCalendarImg(calendarPostDto.getCalendarImg());
             calendar.setCalendarMembers(calendarMembers);
 
             return calendar;
