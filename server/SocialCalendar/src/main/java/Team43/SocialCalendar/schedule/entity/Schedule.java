@@ -5,6 +5,7 @@ import Team43.SocialCalendar.common.BaseEntity;
 import Team43.SocialCalendar.diary.entity.Diary;
 import Team43.SocialCalendar.member.entity.Member;
 import Team43.SocialCalendar.schedule.comment.entity.ScheduleComment;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -88,4 +89,14 @@ public class Schedule {
             calendar.getSchedules().add(this);
         }
     }
+
+    public Schedule(Long scheduleId, String title, String attendees, String scheduleAt, String location) {
+        this.scheduleId = scheduleId;
+        this.title = title;
+        this.attendees = attendees;
+        this.scheduleAt = scheduleAt;
+        this.location = location;
+    }
 }
+
+

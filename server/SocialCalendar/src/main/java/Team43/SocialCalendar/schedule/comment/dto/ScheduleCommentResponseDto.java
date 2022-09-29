@@ -15,7 +15,4 @@ public class ScheduleCommentResponseDto {
     private String name;
     private String img;
     private String contents;
-
-
-
 }
