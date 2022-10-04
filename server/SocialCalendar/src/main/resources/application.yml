@@ -1,6 +1,6 @@
 spring:
   profiles:
-    default: mysql
+    default: h2
 mail:
   address:
     admin: admin@gmail.com

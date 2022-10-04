@@ -58,6 +58,7 @@ public class SecurityConfiguration {
                 .apply(new CustomFilterConfigurer())
                 .and()
                 .authorizeHttpRequests(authorize -> authorize
+                        .antMatchers(HttpMethod.OPTIONS, "/**/*").permitAll()
                         .antMatchers(HttpMethod.POST, "/members").permitAll()
                         .antMatchers(HttpMethod.PATCH,"/members/**").hasRole("USER")
                         .antMatchers(HttpMethod.GET,"/members").hasRole("USER")
@@ -77,8 +78,6 @@ public class SecurityConfiguration {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.addAllowedHeader("");
-        configuration.addAllowedMethod("");
         configuration.setAllowCredentials(true);
 
         configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
