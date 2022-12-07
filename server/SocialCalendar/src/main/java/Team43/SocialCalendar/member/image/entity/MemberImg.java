@@ -1,10 +1,14 @@
 package Team43.SocialCalendar.member.image.entity;
 
 import Team43.SocialCalendar.member.entity.Member;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
 public class MemberImg {
 
     @Id

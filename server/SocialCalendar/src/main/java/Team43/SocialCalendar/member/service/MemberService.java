@@ -3,6 +3,7 @@ package Team43.SocialCalendar.member.service;
 import Team43.SocialCalendar.exception.BusinessLogicException;
 import Team43.SocialCalendar.exception.ExceptionCode;
 import Team43.SocialCalendar.member.entity.Member;
+import Team43.SocialCalendar.member.image.service.StorageService;
 import Team43.SocialCalendar.member.repository.MemberRepository;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
@@ -31,8 +32,8 @@ public class MemberService {
         Member findMember = findVerifiedMember(member.getMemberId());
         Optional.ofNullable(member.getName())
                 .ifPresent(name -> findMember.setName(name));
-        Optional.ofNullable(member.getMemberImg())
-                .ifPresent(memberImg -> findMember.setMemberImg(memberImg));
+//        Optional.ofNullable(member.getMemberImg())
+//                .ifPresent(memberImg -> findMember.setMemberImg(memberImg));
         Optional.ofNullable(member.getStatusMessage())
                 .ifPresent(statusMsg -> findMember.setStatusMessage(statusMsg));
 

@@ -36,7 +36,7 @@ public class MemberMapper {
 
             member.setMemberId(memberPatchDto.getMemberId());
             member.setName(memberPatchDto.getName());
-            member.setMemberImg(memberPatchDto.getMemberImg());
+//            member.setMemberImg(memberPatchDto.getMemberImg());
             member.setStatusMessage(memberPatchDto.getStatusMessage());
 
             return member;
@@ -55,7 +55,7 @@ public class MemberMapper {
             memberResponseDto.setEmail(member.getEmail());
             memberResponseDto.setName(member.getName());
             memberResponseDto.setPassword(member.getPassword());
-            memberResponseDto.setMemberImg(member.getMemberImg());
+//            memberResponseDto.setMemberImg(member.getMemberImg());
             memberResponseDto.setStatusMessage(member.getStatusMessage());
 
             memberResponseDto.setAdminCalendars(adminCalendarsToAdminCalendarResponseDtos(adminCalendars));

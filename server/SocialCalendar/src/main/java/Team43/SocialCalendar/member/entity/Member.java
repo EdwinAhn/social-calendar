@@ -26,8 +26,8 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long memberId;
 
-    @Column(length = 500)
-    private String memberImg;
+//    @Column(length = 500)
+//    private String memberImg;
 
     @Column(length = 100, nullable = false)
     private String email;
