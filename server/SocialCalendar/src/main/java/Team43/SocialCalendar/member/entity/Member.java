@@ -4,6 +4,7 @@ import Team43.SocialCalendar.calendar.entity.Calendar;
 import Team43.SocialCalendar.calendar.entity.CalendarAttendee;
 import Team43.SocialCalendar.diary.comment.entity.DiaryComment;
 import Team43.SocialCalendar.diary.entity.Diary;
+import Team43.SocialCalendar.member.image.entity.MemberImg;
 import Team43.SocialCalendar.schedule.comment.entity.ScheduleComment;
 import Team43.SocialCalendar.schedule.entity.Schedule;
 import lombok.Getter;
@@ -90,4 +91,7 @@ public class Member {
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<DiaryComment> diaryComments = new ArrayList<>();
+
+    @OneToOne(mappedBy = "member", cascade = CascadeType.REMOVE)
+    private MemberImg memberImage;
 }
