@@ -13,7 +13,7 @@ public class ScheduleCommentResponseDto {
     private Long scheduleId;
     private Long memberId;
     private String name;
-    private String img;
+//    private String img;
     private String contents;
 
 

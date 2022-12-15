@@ -59,7 +59,7 @@ public interface CalendarMapper {
         calendarResponseDto.setMember(calendar.getMemberId());
         calendarResponseDto.setEmail(calendar.getMemberId().getEmail());
         calendarResponseDto.setName(calendar.getMemberId().getName());
-        calendarResponseDto.setMemberImg(calendar.getMemberId().getMemberImg());
+//        calendarResponseDto.setMemberImg(calendar.getMemberId().getMemberImg());
 
         calendarResponseDto.setCalendarAttendees(calendarAttendeesToCalendarAttendeeResponseDtos(calendarAttendees));
 
@@ -78,7 +78,7 @@ public interface CalendarMapper {
                         .memberId(calendarAttendee.getMemberId().getMemberId())
                         .email(calendarAttendee.getMemberId().getEmail())
                         .name(calendarAttendee.getMemberId().getName())
-                        .memberImg(calendarAttendee.getMemberId().getMemberImg())
+//                        .memberImg(calendarAttendee.getMemberId().getMemberImg())
                         .build())
                 .collect(Collectors.toList());
     }

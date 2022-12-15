@@ -23,7 +23,7 @@ public class DiaryResponseDto {
     @Setter(AccessLevel.NONE)
     private long memberId;
     private String name;
-    private String memberImg;
+//    private String memberImg;
 
     private LocalDateTime createdAt;
 

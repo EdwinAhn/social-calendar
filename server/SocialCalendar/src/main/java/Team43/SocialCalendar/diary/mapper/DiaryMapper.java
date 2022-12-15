@@ -56,7 +56,7 @@ public interface DiaryMapper {
 
         diaryResponseDto.setMember(diary.getMember());
         diaryResponseDto.setName(diary.getMember().getName());
-        diaryResponseDto.setMemberImg(diary.getMember().getMemberImg());
+//        diaryResponseDto.setMemberImg(diary.getMember().getMemberImg());
 
         diaryResponseDto.setCreatedAt(diary.getCreatedAt());
 

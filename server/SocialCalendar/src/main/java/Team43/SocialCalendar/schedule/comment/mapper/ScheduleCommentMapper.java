@@ -38,13 +38,13 @@ public class ScheduleCommentMapper {
             Long memberId = scheduleComment.getMember().getMemberId();
             Long scheduleId = scheduleComment.getSchedule().getScheduleId();
             String name = scheduleComment.getMember().getName();
-            String memberImg = scheduleComment.getMember().getMemberImg();
+//            String memberImg = scheduleComment.getMember().getMemberImg();
 
             String contents = scheduleComment.getContents();
             Long scheduleCommentId = scheduleComment.getScheduleCommentId();
 
             ScheduleCommentResponseDto scheduleCommentResponseDto
-                    = new ScheduleCommentResponseDto(scheduleCommentId, scheduleId, memberId, name, memberImg, contents);
+                    = new ScheduleCommentResponseDto(scheduleCommentId, scheduleId, memberId, name, contents);
             return scheduleCommentResponseDto;
         }
     }

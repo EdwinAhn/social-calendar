@@ -32,8 +32,6 @@ public class MemberService {
         Member findMember = findVerifiedMember(member.getMemberId());
         Optional.ofNullable(member.getName())
                 .ifPresent(name -> findMember.setName(name));
-//        Optional.ofNullable(member.getMemberImg())
-//                .ifPresent(memberImg -> findMember.setMemberImg(memberImg));
         Optional.ofNullable(member.getStatusMessage())
                 .ifPresent(statusMsg -> findMember.setStatusMessage(statusMsg));
 

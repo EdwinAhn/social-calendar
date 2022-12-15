@@ -39,13 +39,13 @@ public class DiaryCommentMapper {
             Long diaryId = diaryComment.getDiary().getDiaryId();
             Long memberId = diaryComment.getMember().getMemberId();
             String name = diaryComment.getMember().getName();
-            String memberImg = diaryComment.getMember().getMemberImg();
+//            String memberImg = diaryComment.getMember().getMemberImg();
 
             String contents = diaryComment.getContents();
             Long diaryCommentId = diaryComment.getDiaryCommentId();
 
             DiaryCommentResponseDto diaryCommentResponseDto =
-                    new DiaryCommentResponseDto(diaryCommentId, diaryId, memberId, name, memberImg, contents);
+                    new DiaryCommentResponseDto(diaryCommentId, diaryId, memberId, name, contents);
 
             return diaryCommentResponseDto;
         }

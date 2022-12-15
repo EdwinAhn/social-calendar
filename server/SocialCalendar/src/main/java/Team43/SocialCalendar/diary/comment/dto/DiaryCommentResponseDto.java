@@ -14,6 +14,6 @@ public class DiaryCommentResponseDto {
     private long diaryId;
     private long memberId;
     private String name;
-    private String img;
+//    private String img;
     private String contents;
 }
